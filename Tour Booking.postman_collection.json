@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "0d532457-06d3-479a-8e05-24697be47da6",
+		"name": "Tour Booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26148094"
+	},
+	"item": [
+		{
+			"name": "Register a User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWEyMGNmN2U3YjFiMzJjNmMyZjIyNyIsImVtYWlsIjoibWFuYXRhZDEyM0BtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MzYyOTM1MX0.fFBJcAGqOgwfIpYYfvX7I-M_VPJQZQtzAniYHkU5F4w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"toots@mail.com\",\r\n    \"password\": \"toots12345\",\r\n    \"mobileNo\": \"09987654321\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login a user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWI5YmZmNmE1ZWQ5Y2JlOWY0OTU3MyIsImVtYWlsIjoicmFuaWVyNDU2QGdtYWlsLmNvbSIsIm1vYmlsZU5vIjo5MTY3NDg1MDc1LCJpYXQiOjE2ODM4MDQwODV9.i-NT8ol1ilvia7BCujjukOWlBd6fGBlfqkHe9wHQ9Xs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ranier456\",\r\n    \"password\": \"ranier12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a tour",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWI5YmZmNmE1ZWQ5Y2JlOWY0OTU3MyIsImVtYWlsIjoicmFuaWVyNDU2QGdtYWlsLmNvbSIsIm1vYmlsZU5vIjo5MTY3NDg1MDc1LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODM4ODcwNjZ9.4PCtuvCPXgAvR0O7YsD6ubabLbu4qcjXQn-5dfDVmuY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tourName\": \"Bicol\",\r\n    \"description\": \"Bicol is a destination suitable for all with its historical sites, eco-tourism and watersports. There is also the famous Mayon Volcano, Bulusan Volcano Natural Park, and numerous stunning waterfalls\",\r\n    \"price\": 5999,\r\n    \"slots\": 0,\r\n    \"eventDate\": \"07/015/2023\"\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/tour/createTour",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"tour",
+						"createTour"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all tours",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/tour/allTours",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"tour",
+						"allTours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get All Active",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve single tour",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Update a tour",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWI5YmZmNmE1ZWQ5Y2JlOWY0OTU3MyIsImVtYWlsIjoicmFuaWVyNDU2QGdtYWlsLmNvbSIsIm1vYmlsZU5vIjo5MTY3NDg1MDc1LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODM4ODg3ODZ9.dN5shxM_mrZBPj9nFOkyar7qVjoxOYE_CTdI_xkYHpA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"slots\": 10,\r\n  \"eventDate\": \"2023-07-31\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/tour/Coron",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"tour",
+						"Coron"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Archive a tour",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWI5YmZmNmE1ZWQ5Y2JlOWY0OTU3MyIsImVtYWlsIjoicmFuaWVyNDU2QGdtYWlsLmNvbSIsIm1vYmlsZU5vIjo5MTY3NDg1MDc1LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2ODM4ODk3MjV9.RYAeUGJ3NIYNrkIO-iE_7jNigo1r1eNu4LFs4eULrpI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isActive\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/tour/645d8e99da7307c277c808de/archive",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"tour",
+						"645d8e99da7307c277c808de",
+						"archive"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
