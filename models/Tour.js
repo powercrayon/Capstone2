@@ -16,7 +16,7 @@ const tourSchema = new mongoose.Schema({
   isActive: {
     type: Boolean,
     required: false
-  }
+  },
   slots: {
     type: Number,
     required: true
