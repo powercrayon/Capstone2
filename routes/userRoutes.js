@@ -14,4 +14,8 @@ router.get("/:userId", auth.verify, userController.getUserDetails);
 
 router.put("/setAdmin/:userId", auth.verify , userController.setAdmin);
 
+router.post("/details",  userController.getAllUsers);
+
+router.post("/book", userController.bookTour);
+
 module.exports = router;

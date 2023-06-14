@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
 const userRoutes = require("./routes/userRoutes");
 const tourRoutes = require("./routes/tourRoutes");
 const orderRoutes = require("./routes/orderRoutes")
@@ -18,6 +19,7 @@ db.on("error", console.error.bind(console, "Connection error"));
 db.once("open", () => console.log("We're connected to the cloud database"))
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({extended:true}));
 app.use("/user", userRoutes);
 app.use("/tour", tourRoutes);

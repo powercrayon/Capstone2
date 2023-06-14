@@ -3,12 +3,16 @@ const Order = require("../models/Order");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const auth = require("../auth");
+const { authenticate, authorizeAdmin } = require('../auth');
 
 module.exports.registerUser = (req, res) => {
   let newUser = new User({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
     mobileNo: req.body.mobileNo
+
   });
 
   return newUser
@@ -61,20 +65,21 @@ module.exports.loginUser = (req, res) => {
 
 
 module.exports.getUserEmail = (req, res) => {
-	const { email } = req.body; 
-	User.findOne({ email }) 
-	.then(user => {
-		if (user) {
-			res.send(user);
-		} else {
-			res.send("User not found"); 
-		}
-	})
-	.catch(error => {
-		console.log(error);
-		res.send("Error occurred");
-	});
+  const { email } = req.body;
+  User.findOne({ email })
+    .then(user => {
+      if (user) {
+        res.json(user);
+      } else {
+        res.status(404).json({ error: 'User not found' });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ error: 'Error occurred' });
+    });
 };
+
 
 module.exports.getUserDetails = (req, res) => {
   const { email } = req.body;
@@ -114,3 +119,24 @@ module.exports.setAdmin = async (req, res) => {
     res.send(error);
   }
 };
+
+
+module.exports.getAllUsers = (req, res) => {
+
+    return User.find({}).then(result => res.send(result));
+}
+
+module.exports.bookTour = (req, res) => {
+  
+  const { tourId, userId, date } = req.body;
+
+  
+  const booking = {
+    tourId,
+    userId,
+    date,
+  };
+
+  res.status(200).json({ message: 'Tour booked successfully', booking });
+};
+

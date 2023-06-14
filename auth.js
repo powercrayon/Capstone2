@@ -88,37 +88,13 @@ module.exports.decode = (token) => {
 }
 
 module.exports.authenticate = (req, res, next) => {
-  let token = req.headers.authorization;
-
-  if (token !== undefined) {
-    console.log(token);
-
-    token = token.slice(7, token.length);
-
-    jwt.verify(token, secret, (err, data) => {
-      if (err) {
-        return res.send({ auth: "failed" });
-      } else {
-        
-        const isAdmin = data.isAdmin;
-
-        if (!isAdmin) {
-          req.user = data;
-          next()
-        } else {
-          return res.send({ auth: "failed", message: "Admin access denied" });
-        }
-      }
+  User.find()
+    .then((users) => {
+      res.send(users);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.send({ message: "Error occurred" });
     });
-  } else {
-    return res.send({ auth: "failed", message: "Missing token" });
-  }
 };
-
-module.exports.authorizeAdmin = (req, res, next) => {
-  if (!req.user.isAdmin) {
-    return res.status(403).send({ message: "Not authorized as admin" });
-  }
-
-  next();
-};
+  
